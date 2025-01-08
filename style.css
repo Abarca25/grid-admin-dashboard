@@ -1,6 +1,8 @@
 :root{
     --dashboard-text-color: white;
     --dashboard-padding-left: .75rem;
+    --primary-blue-color: rgb(72, 130, 218);
+    --primary-grey-color: rgb(224, 224, 224);
 }
 
 html,
@@ -33,7 +35,7 @@ body {
     padding-top: 1rem;
     padding-left: var(--dashboard-padding-left);
     color: var(--dashboard-text-color);
-    background-color: aqua;
+    background-color: var(--primary-blue-color)
 }
 
 .dashboard-header {
@@ -48,8 +50,19 @@ body {
     grid-area: user-menu;
 }
 
+.user-menu img {
+    width: 1.5rem;
+    padding-right: .75rem;
+}
+
 .settings-menu {
     grid-area: settings-menu;
+}
+
+.settings-menu img {
+    width: 1.75rem;
+    height: 1.75rem;
+    padding-right: .75rem;
 }
 
 .dashboard-header img{
@@ -62,36 +75,175 @@ body {
 .login-layout {
     grid-area: login-layout;
     display: grid;
-    grid-template-columns: 70% 50%;
+    grid-template-columns: 70% 30%;
     grid-template-rows: 50% 50%;
     grid-template-areas: "search account"
                          "account-details user-buttons";
-    background-color: bisque;
+    background-color: white;
 }
 
 .search-bar {
     grid-area: search;
 }
 
+.search-layout{
+    display: flex;
+    align-content: center;
+    padding-top: 1rem;
+    padding-left: 2rem;
+}
+
+
 .search-bar img {
     height: 2rem;
 }
 
 .user-account {
+    width: 10rem;
+    display: flex;
+    padding-left: 7rem;
+    justify-content: space-between ;
+    align-items: center;
     grid-area: account;
+}
+
+.user-account img {
+    width: 1.75rem;
 }
 
 .user-greeting {
     grid-area: account-details;
+    display: flex;
+    align-items: stretch;
+    padding-left: 2rem;
+    min-width: 0;
+    min-height: 0;
+}
+
+.search-layout input {
+    width: 40rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--primary-grey-color);
+    border-color: transparent;
+}
+
+
+
+.profile-pic {
+    width: 4rem;
+    height: 4rem;
+    padding-right: 1rem;
 }
 
 .user-buttons {
     grid-area: user-buttons;
 }
 
+.user-buttons button{
+    width: 5rem;
+    height: 2rem;
+    margin-right: 1rem;
+    background-color: var(--primary-blue-color);
+    border: transparent;
+    border-radius: 3px;
+}
+
 .card-layout {
     grid-area: card-layout;
-    background-color: aquamarine;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "card1 card4 sidebar"
+                         "card2 card5 sidebar"
+                         "card3 card6 sidebar";
+                         
+    background-color: var(--primary-grey-color);
+}
+
+.card {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding-left: .5rem;
+    width: 20rem;
+    height: 10rem;
+    border-left: solid orange .30rem;
+}
+
+.card-1 {
+    grid-area: card1;
+}
+
+.card-2 {
+    grid-area: card2;
+}
+
+.card-3 {
+    grid-area: card3;
+}
+
+.card-4 {
+    grid-area: card4;
+}
+
+.card-5 {
+    grid-area: card5;
+}
+
+.card-6 {
+    grid-area: card6;
+}
+
+.sidebar {
+    display: grid;
+    grid-template-rows: repeat(2,50%);
+    grid-area: sidebar;
+    
+}
+
+.announcement {
+    display: grid;
+    background-color: white;
+    width: 23rem;
+    height: 17rem;
+    border-radius: 10px;
+    grid-template-rows: repeat(3,1fr);
+}
+
+.announcement p {
+    font-size: .75rem;
+}
+
+.announcement div {
+    min-height: 0;
+    min-width: 0;
+    padding-left: 1rem;
+}
+
+.trending {
+    display: grid;
+    height: 17rem;
+    width: 23rem;
+    grid-template-rows: repeat(4,1fr);
+}
+
+.trending div {
+    min-width: 0; 
+    min-height: 0;
+    padding-left: 1rem;
+}
+
+.trending div {
+    font-size: .75rem;
+}
+
+.trending {
+    display: grid;
+    background-color: white;
+    grid-template-rows: repeat(4,1fr);
+    border-radius: 10px;
 }
 
 .user-menu .settings-menu{
