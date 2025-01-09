@@ -1,8 +1,11 @@
 :root{
     --dashboard-text-color: white;
-    --dashboard-padding-left: .75rem;
-    --primary-blue-color: rgb(72, 130, 218);
-    --primary-grey-color: rgb(224, 224, 224);
+    --dashboard-padding-left: 1rem;
+    --primary-blue-color: hsl(201.18deg 78.9% 46.47%);
+    --primary-blue-color-hover: hsl(201, 80%, 50%);
+    --primary-grey-color: hsl(214.29deg 31.82% 91.37%);
+    --primary-grey-color-hover: hsl(204, 32%, 83%);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html,
@@ -12,6 +15,15 @@ body {
     height: 100vh;
     box-sizing: content-box;
 }
+
+button:hover{
+    background-color: aliceblue;
+}
+
+.user-menu *:hover, .settings-menu *:hover {
+    filter: invert(100%);
+}
+
 
 .main-layout {
     display: grid;
@@ -33,12 +45,12 @@ body {
                "settings-menu";
     grid-area: dashboard-layout;
     padding-top: 1rem;
-    padding-left: var(--dashboard-padding-left);
     color: var(--dashboard-text-color);
     background-color: var(--primary-blue-color)
 }
 
 .dashboard-header {
+    padding-left: var(--dashboard-padding-left);
     display: flex;
     grid-area: header-layout;
     font-size: .7rem;
@@ -47,15 +59,18 @@ body {
 }
 
 .user-menu {
+    margin-left: var(--dashboard-padding-left);
     grid-area: user-menu;
 }
 
 .user-menu img {
     width: 1.5rem;
     padding-right: .75rem;
+    filter: invert(100%)
 }
 
 .settings-menu {
+    padding-left: var(--dashboard-padding-left);
     grid-area: settings-menu;
 }
 
@@ -63,13 +78,13 @@ body {
     width: 1.75rem;
     height: 1.75rem;
     padding-right: .75rem;
+    filter: invert(100%);
 }
 
 .dashboard-header img{
     height: 2rem;
     align-self: center;
     padding-right: .75rem;
-
 }
 
 .login-layout {
@@ -99,15 +114,21 @@ body {
 }
 
 .user-account {
-    width: 10rem;
+    width: 14rem;
     display: flex;
-    padding-left: 7rem;
+    padding-left: 4rem;
     justify-content: space-between ;
     align-items: center;
     grid-area: account;
 }
 
+.user-account * {
+    margin-right: 1rem;
+}
+
 .user-account img {
+    border: solid white 2px;
+    border-radius: 50%;
     width: 1.75rem;
 }
 
@@ -120,24 +141,53 @@ body {
     min-height: 0;
 }
 
+.usergreeting *{
+    margin: 0;
+}
+
+.usergreeting {
+    padding-top: 1rem;
+}
+
 .search-layout input {
     width: 40rem;
     height: 1.5rem;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: var(--primary-grey-color);
     border-color: transparent;
+}
+
+.search-bar input:hover{
+    background-color: var(--primary-grey-color-hover);
 }
 
 
 
 .profile-pic {
+    border: solid white 2px;
+    border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    padding-right: 1rem;
+    margin-right: 1rem;
+}
+
+.greeting {
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.user-name {
+    padding-top: .5rem;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .user-buttons {
     grid-area: user-buttons;
+}
+
+.user-buttons *:hover{
+    background-color: var(--primary-blue-color-hover);
 }
 
 .user-buttons button{
@@ -146,34 +196,99 @@ body {
     margin-right: 1rem;
     background-color: var(--primary-blue-color);
     border: transparent;
-    border-radius: 3px;
+    border-radius: 25px;
+    color: white;
 }
 
 .card-layout {
+    position: relative;
     grid-area: card-layout;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "card1 card4 sidebar"
+    grid-template-areas: 
+                         "card1 card4 sidebar"
                          "card2 card5 sidebar"
                          "card3 card6 sidebar";
-                         
+    column-gap: 1rem;
+    padding-top: 2rem;                    
     background-color: var(--primary-grey-color);
 }
 
 .card {
-    margin-left: 1rem;
+    position: relative;
+    line-height: 1.25rem;
+    font-size: .85rem;
+    justify-content: center;
+    padding-left: 1rem;
     margin-top: 1rem;
     background-color: white;
-    border-radius: 1rem;
-    padding-left: .5rem;
+    border-radius: .55em;
     width: 20rem;
     height: 10rem;
     border-left: solid orange .30rem;
 }
 
+.card h3 {
+    position: absolute;
+    top: -3rem;
+    left: 0;
+}
+
+.card img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.user-interaction {
+    position: absolute;
+    bottom: .25rem;
+    right: .25rem;
+    justify-self: end;
+    padding-right: 1rem;
+}
+
+.user-interaction *:hover{
+    filter: opacity(.65);
+}
+
+.pfp-border {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.trending * img:hover,
+.profile-pic:hover,
+.user-account img:nth-child(2):hover
+{
+    border-color: var(--primary-blue-color-hover)
+}
+
+.user-account img:nth-child(1):hover{
+    filter: opacity(.65);
+}
+
+.user-interaction img:nth-child(-n+2) {
+    padding-right: 1rem;
+}
+
+.card h4 {
+    margin-bottom: 0;
+}
+
+.card p {
+    margin-top: 0;
+}
+
 .card-1 {
     grid-area: card1;
+}
+
+.card-1, .card-2, .card-3 {
+    margin-left: 1rem;
 }
 
 .card-2 {
@@ -198,53 +313,101 @@ body {
 
 .sidebar {
     display: grid;
+    gap: 1.60rem;
     grid-template-rows: repeat(2,50%);
+    margin-top: 1rem;
     grid-area: sidebar;
     
 }
 
 .announcement {
-    display: grid;
+    position: relative;
+    display: flex;
     background-color: white;
-    width: 23rem;
-    height: 17rem;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    max-width: 17rem;
+    height: 15rem;
     border-radius: 10px;
-    grid-template-rows: repeat(3,1fr);
 }
 
 .announcement p {
+    font-size: .65rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#annoucements-header {
+    position: absolute;
+    top: -2.20rem;
+    left: 0;
+}
+
+.announcement * {
+    flex: 1;
+    max-height: 100px;
+    max-width: 200px;
+    margin: .25rem;
+}
+
+.ann-1, .ann-2 {
+    border-bottom: solid rgba(0, 0, 0, 0.25) 1px;
+}
+
+
+.trending * {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    height: 25%;
+    width: 12rem;
     font-size: .75rem;
 }
 
-.announcement div {
-    min-height: 0;
-    min-width: 0;
-    padding-left: 1rem;
+#trending-header {
+    position: absolute;
+    font-size: 1.1rem;
+    top: -4.2rem;
+    left: 0;
+
+}
+
+.user-project {
+    box-sizing: border-box;
+    display: flex;
+    width: 12rem;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.user-project * {
+    margin: .5rem;
+    text-overflow: ellipsis;
+}
+
+.displayed-user {
+    font-size: .85rem;
+}
+.trending img {
+    border: solid white 2px;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: .2rem;
 }
 
 .trending {
-    display: grid;
-    height: 17rem;
-    width: 23rem;
-    grid-template-rows: repeat(4,1fr);
-}
-
-.trending div {
-    min-width: 0; 
-    min-height: 0;
-    padding-left: 1rem;
-}
-
-.trending div {
-    font-size: .75rem;
-}
-
-.trending {
-    display: grid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    grid-template-rows: repeat(4,1fr);
     border-radius: 10px;
+    height: 15rem;
+    width: 17rem;
 }
+
 
 .user-menu .settings-menu{
     color: var(--dashboard-text-color);
